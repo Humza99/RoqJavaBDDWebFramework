@@ -1,6 +1,6 @@
-package Framework;
+package Framework.CsvObjects;
 
-public class CsvFileHeaders {
+public class Products {
 
     private String name;
     private String price;

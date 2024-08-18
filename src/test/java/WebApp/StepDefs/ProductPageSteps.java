@@ -1,12 +1,11 @@
 package WebApp.StepDefs;
 
+import Framework.CsvObjects.Products;
+import Framework.HelperMethods;
 import Hooks.DriverInjection;
 import WebApp.WebAppPagesInit;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import java.io.IOException;
 
 public class ProductPageSteps {
 
@@ -21,8 +20,9 @@ public class ProductPageSteps {
         webApp.productsPage.addProductToCart("sauce-labs-bike-light");
         webApp.helperMethods.assertPageTitle("Swag Labs");
     }
-    @When("I proceed to the basket")
-    public void i_proceed_to_the_basket() {
+
+    @When("I go to the basket")
+    public void iGoToTheBasket() {
         webApp.productsPage.goToCartBtn.click();
         webApp.helperMethods.assertPageUrl("https://www.saucedemo.com/cart.html");
     }
@@ -30,11 +30,10 @@ public class ProductPageSteps {
     // Scenario 2
 
     @Then("I check website prices and iterate over each product in the csv and me sure it matches")
-    public void i_check_website_prices_and_iterate_over_each_product_in_the_csv_and_me_sure_it_matches() throws IOException { // TODO: Sort out hard coded CSV reader
-        String csvFilePath = "C:\\Users\\humza\\IdeaProjects\\Selenium4WebFramework\\src\\test\\resources\\Products.csv";
-        var csvFile = webApp.helperMethods.csvReader(csvFilePath);
+    public void i_check_website_prices_and_iterate_over_each_product_in_the_csv_and_me_sure_it_matches() {
+        var csvFile = HelperMethods.csvReader("Products", Products.class);
 
-        for (var product : csvFile) {
+        for (Products product : csvFile) {
             String productPrice = webApp.productsPage.getProductPrice(product.getName());
             webApp.helperMethods.assertAreEqual(product.getPrice(), productPrice);
             //System.out.println(product.getName());

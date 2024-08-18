@@ -4,8 +4,9 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.List;
 
@@ -66,14 +67,17 @@ public class HelperMethods {
         }
     }
 
-    public List<CsvFileHeaders> csvReader(String csvPath) throws IOException {
-        try (FileReader reader = new FileReader(csvPath)) {
-            return new CsvToBeanBuilder<CsvFileHeaders>(reader)
-                    .withType(CsvFileHeaders.class)
+    public static <T> List<T> csvReader(String csvFileName, Class<T> csvClass)
+    {
+        Path csvPath = Paths.get(System.getProperty("user.dir"), "src", "test", "resources", "CSVFiles", csvFileName + ".csv");
+        try (FileReader reader = new FileReader(csvPath.toString())) {
+            return new CsvToBeanBuilder<T>(reader)
+                    .withType(csvClass)
+                    .withIgnoreLeadingWhiteSpace(true)
                     .build()
                     .parse();
-        } catch (IOException ex) {
-            throw new IOException("Csv file could not be found. Please use a valid path", ex);
-        }
+            } catch (Exception e) {
+                throw new RuntimeException("CSV file '" + csvFileName + "' could not be found");
+            }
     }
 }

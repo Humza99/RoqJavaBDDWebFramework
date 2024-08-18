@@ -5,6 +5,10 @@ import WebApp.WebAppPagesInit;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class LoginPageSteps {
 
     private WebAppPagesInit webApp;
