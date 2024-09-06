@@ -18,6 +18,11 @@ Feature: SwagLabs
     Given I log in with valid credentials
     Then I check website prices and iterate over each product in the csv and me sure it matches
 
+  @fail
+  Scenario: Expecting to successfully login
+    When I enter invalid credentials to login
+    Then I am logged in successfully
+
   Scenario: A unhappy path scenario of entering incorrect login credentials
-    Given I enter invalid credentials to login
+    When I enter invalid credentials to login
     Then A error message is outputted on the screen

@@ -1,4 +1,4 @@
-package Hooks;
+package Framework.Hooks;
 
 import Framework.WebAppDriver;
 

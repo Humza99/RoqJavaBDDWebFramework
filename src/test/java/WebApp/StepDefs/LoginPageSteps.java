@@ -1,13 +1,10 @@
 package WebApp.StepDefs;
 
-import Hooks.DriverInjection;
+import Framework.Hooks.DriverInjection;
 import WebApp.WebAppPagesInit;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import io.cucumber.java.en.When;
 
 public class LoginPageSteps {
 
@@ -32,7 +29,7 @@ public class LoginPageSteps {
 
     // Scenario 3
 
-    @Given("I enter invalid credentials to login")
+    @When("I enter invalid credentials to login")
     public void i_enter_invalid_credentials_to_login() {
         webApp.loginPage.enterUsername("fail_user");
         webApp.loginPage.enterPassword("fail_password");
@@ -42,5 +39,10 @@ public class LoginPageSteps {
     public void a_error_message_is_outputted_on_the_screen() {
         String errorMessage = webApp.loginPage.errorMessage.getText();
         webApp.helperMethods.assertAreEqual("Epic sadface: Username and password do not match any user in this service", errorMessage);
+    }
+
+    @Then("I am logged in successfully")
+    public void iAmLoggedInSuccessfully() {
+        webApp.productsPage.pageTitle.isDisplayed();
     }
 }

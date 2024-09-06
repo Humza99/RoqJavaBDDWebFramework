@@ -3,7 +3,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = "src/test/resources/Features",
-        glue = {"WebApp.StepDefs", "Hooks"}, // Add the package names where your step definitions and hooks are located
+        glue = {"WebApp.StepDefs", "Framework/Hooks"}, // Add the package names where your step definitions and hooks are located
         tags = "@WebApplication",
         plugin = { "pretty",
                 "json:target/cucumber-reports/cucumber.json",

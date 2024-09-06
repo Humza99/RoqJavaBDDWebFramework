@@ -13,6 +13,9 @@ public class ProductsPage {
     @FindBy(xpath = "//a[@class='shopping_cart_link']")
     public WebElement goToCartBtn;
 
+    @FindBy(xpath = "//span[@class='title' and text()='Products']")
+    public WebElement pageTitle;
+
     // methods
     public void addProductToCart(String productName){
         WebElement addToCartBtn = driver.findElement(By.id("add-to-cart-" + productName));

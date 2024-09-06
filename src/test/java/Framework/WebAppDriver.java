@@ -109,7 +109,7 @@ public class WebAppDriver {
                 FileUtils.copyFile(screenshotFile, targetFile);
 
                 byte[] fileContent = FileUtils.readFileToByteArray(screenshotFile);
-                scenarioContext.attach(fileContent, "image/png", "Test Failed. Screenshot saved at " + screenshotPath);
+                scenarioContext.attach(fileContent, "image/png", "Test Failed. Local screenshot saved at " + screenshotPath);
 
             } catch (Exception e) {
                 e.printStackTrace();
