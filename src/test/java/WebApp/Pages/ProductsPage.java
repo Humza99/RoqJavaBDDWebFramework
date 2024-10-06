@@ -1,5 +1,9 @@
 package WebApp.Pages;
 
+import Framework.CustomElements.CustomFieldDecorator;
+import Framework.CustomElements.DynamicImpl.DynamicButton;
+import Framework.CustomElements.FindByImpl.Button;
+import Framework.CustomElements.FindByImpl.Text;
 import Framework.WebAppDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,14 +15,14 @@ public class ProductsPage {
 
     // locators
     @FindBy(xpath = "//a[@class='shopping_cart_link']")
-    public WebElement goToCartBtn;
+    public Button goToCartBtn;
 
     @FindBy(xpath = "//span[@class='title' and text()='Products']")
-    public WebElement pageTitle;
+    public Text pageTitle;
 
     // methods
     public void addProductToCart(String productName){
-        WebElement addToCartBtn = driver.findElement(By.id("add-to-cart-" + productName));
+        DynamicButton addToCartBtn = new DynamicButton(driver, By.id("add-to-cart-" + productName));
         addToCartBtn.click();
     }
 
@@ -32,6 +36,6 @@ public class ProductsPage {
     // constructor to initialise driver and pagefactory for the page
     public ProductsPage(WebAppDriver webAppDriver) {
         driver = webAppDriver.getDriver();
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new CustomFieldDecorator(driver), this);
     }
 }

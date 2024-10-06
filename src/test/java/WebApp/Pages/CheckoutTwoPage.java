@@ -1,8 +1,9 @@
 package WebApp.Pages;
 
+import Framework.CustomElements.CustomFieldDecorator;
+import Framework.CustomElements.FindByImpl.Button;
 import Framework.WebAppDriver;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -10,10 +11,10 @@ public class CheckoutTwoPage {
 
     // locators
     @FindBy(id = "finish")
-    public WebElement finishBtn;
+    public Button finishBtn;
 
     @FindBy(id = "cancel")
-    private WebElement cancelBtn;
+    private Button cancelBtn;
 
     // methods
 
@@ -23,7 +24,7 @@ public class CheckoutTwoPage {
     // constructor to initialise driver and pagefactory for the page
     public CheckoutTwoPage(WebAppDriver webAppDriver) {
         driver = webAppDriver.getDriver();
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new CustomFieldDecorator(driver), this);
     }
 
 }

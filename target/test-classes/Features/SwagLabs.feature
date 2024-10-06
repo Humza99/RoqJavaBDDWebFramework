@@ -1,4 +1,3 @@
-@WebApplication
 Feature: SwagLabs
 
   Web Application Testing with SwagLabs Website

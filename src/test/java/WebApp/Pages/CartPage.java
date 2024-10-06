@@ -1,5 +1,6 @@
 package WebApp.Pages;
 
+import Framework.CustomElements.CustomFieldDecorator;
 import Framework.WebAppDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,7 +26,7 @@ public class CartPage {
     // constructor to initialise driver and pagefactory for the page
     public CartPage(WebAppDriver webAppDriver) {
         driver = webAppDriver.getDriver();
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new CustomFieldDecorator(driver), this);
     }
 
 }
