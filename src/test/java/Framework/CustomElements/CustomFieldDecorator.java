@@ -3,7 +3,7 @@ package Framework.CustomElements;
 import org.openqa.selenium.support.pagefactory.DefaultFieldDecorator;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
-import Framework.CustomElements.FindByImpl.CustomElementLocatorFactory;
+import Framework.CustomElements.FindByImpl.ElementLocatorFactory;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 
@@ -16,7 +16,7 @@ The decorate() method checks if the field type is assignable from BaseElement an
 
 public class CustomFieldDecorator extends DefaultFieldDecorator {
 
-    private IElementLocatorFactory elementFactory = new CustomElementLocatorFactory();
+    private IElementLocatorFactory elementFactory = new ElementLocatorFactory();
 
     public CustomFieldDecorator(final SearchContext searchContext) {
         super(new DefaultElementLocatorFactory(searchContext));

@@ -2,6 +2,7 @@ package WebApp.Pages;
 
 import Framework.CustomElements.CustomFieldDecorator;
 import Framework.CustomElements.DynamicImpl.DynamicButton;
+import Framework.CustomElements.DynamicImpl.DynamicText;
 import Framework.CustomElements.FindByImpl.Button;
 import Framework.CustomElements.FindByImpl.Text;
 import Framework.WebAppDriver;
@@ -27,7 +28,7 @@ public class ProductsPage {
     }
 
     public String getProductPrice(String product){
-        return driver.findElement(By.xpath("//div[@class='inventory_item_name ' and text()='" + product + "']//parent::a//parent::div//parent::div//div[@class='inventory_item_price']")).getText();
+        return new DynamicText(driver, By.xpath("//div[@class='inventory_item_name ' and text()='" + product + "']//parent::a//parent::div//parent::div//div[@class='inventory_item_price']")).getText();
     }
 
     // instantiate driver

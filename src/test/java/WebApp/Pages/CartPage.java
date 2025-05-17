@@ -1,6 +1,7 @@
 package WebApp.Pages;
 
 import Framework.CustomElements.CustomFieldDecorator;
+import Framework.CustomElements.FindByImpl.Button;
 import Framework.WebAppDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,13 +12,13 @@ public class CartPage {
 
     // locators
     @FindBy(id = "remove-sauce-labs-backpack")
-    private WebElement removeProductBtn;
+    private Button removeProductBtn;
 
     @FindBy(id = "continue-shopping")
-    private WebElement continueShoppingBtn;
+    private Button continueShoppingBtn;
 
     @FindBy(id = "checkout")
-    public WebElement checkoutBtn;
+    public Button checkoutBtn;
 
     // methods
 

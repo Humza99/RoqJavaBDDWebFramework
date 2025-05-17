@@ -12,7 +12,7 @@ create() method takes a class and a wrappedElement and uses reflection to create
 findImplementationFor() method uses reflection to dynamically find the implementation class for a given element class.
  */
 
-public class CustomElementLocatorFactory implements IElementLocatorFactory {
+public class ElementLocatorFactory implements IElementLocatorFactory {
 
     private <E extends IBaseElement> Class<? extends E> findImplementationFor(final Class<E> elementClass) {
         try {

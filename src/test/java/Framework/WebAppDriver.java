@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.io.File;
+import java.io.*;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -25,49 +25,56 @@ public class WebAppDriver {
     private WebDriver webDriver;
 
     public WebAppDriver() {
-        webDriver = initialiseDriver(Settings.BROWSER_TYPE.toLowerCase());
+        webDriver = initialiseDriver(SettingsLoader.get("BROWSER.TYPE").toLowerCase());
     }
 
     public WebDriver getDriver() { return webDriver; }
 
     private WebDriver initialiseDriver(String browser) {
+        boolean headlessMode = SettingsLoader.getBoolean("HEADLESS.MODE");
+        boolean enableRemote = SettingsLoader.getBoolean("ENABLE.REMOTE");
         switch (browser){
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
-                if (Settings.HEADLESS_MODE){
+                chromeOptions.addArguments("--incognito");
+                if (headlessMode){
                     chromeOptions.addArguments("--headless");
                     webDriver = new ChromeDriver(chromeOptions);
                 }
-                else if (Settings.ENABLE_REMOTE){
+                else if (enableRemote){
                     webDriver = new RemoteWebDriver(chromeOptions);
                 }
                 else {
-                    webDriver = new ChromeDriver();
+                    webDriver = new ChromeDriver(chromeOptions);
                 }
                 break;
             case "edge":
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
-                if (Settings.ENABLE_REMOTE){
+                if (headlessMode){
+                    edgeOptions.addArguments("--headless");
+                    webDriver = new EdgeDriver(edgeOptions);
+                }
+                else if (enableRemote){
                     webDriver = new RemoteWebDriver(edgeOptions);
                 }
                 else{
-                    webDriver = new EdgeDriver();
+                    webDriver = new EdgeDriver(edgeOptions);
                 }
                 break;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                if (Settings.HEADLESS_MODE){
+                if (headlessMode){
                     firefoxOptions.addArguments("--headless");
                     webDriver = new FirefoxDriver(firefoxOptions);
                 }
-                else if(Settings.ENABLE_REMOTE){
+                else if(enableRemote){
                     webDriver = new RemoteWebDriver(firefoxOptions);
                 }
                 else {
-                    webDriver = new FirefoxDriver();
+                    webDriver = new FirefoxDriver(firefoxOptions);
                 }
                 break;
             default: throw new RuntimeException("Invalid browser name provided '" + browser + "', Please use chrome, edge or firefox.");
@@ -78,7 +85,7 @@ public class WebAppDriver {
     }
 
     private void configDriver(){
-        String baseUrl = Settings.BASE_URL;
+        String baseUrl = SettingsLoader.get("BASE.URL");
         webDriver.manage().window().maximize();
         webDriver.navigate().to(baseUrl);
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));

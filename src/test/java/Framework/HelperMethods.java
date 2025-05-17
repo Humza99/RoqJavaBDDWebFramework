@@ -51,7 +51,7 @@ public class HelperMethods {
         }
     }
 
-    public void assertPageUrlContains(String expectedPageUrlFragment) { // NEED TO TEST THIS METHOD
+    public void assertPageUrlContains(String expectedPageUrlFragment) {
         if (driver != null)
             Assert.assertTrue(driver.getCurrentUrl().contains(expectedPageUrlFragment));
         else {
@@ -59,7 +59,7 @@ public class HelperMethods {
         }
     }
 
-    public void assertPageTitleContains(String expectedPageTitleFragment) { // NEED TO TEST THIS METHOD
+    public void assertPageTitleContains(String expectedPageTitleFragment) { 
         if (driver != null)
             Assert.assertTrue(driver.getTitle().contains(expectedPageTitleFragment));
         else {
