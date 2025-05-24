@@ -1,0 +1,51 @@
+# Maven build directory
+target/
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+logs/
+*.tmp
+temp/
+*.swp
+
+# Allure reports
+target/allure-results/
+target/allure-report/
+.allure/
+
+# Extent reports 
+target/test-reports/
+*.html
+*.pdf
+
+# Cucumber reports
+cucumber-report/
+cucumber-reports/
+cucumber-html-reports/
+cucumber.json
+
+# Surefire and Failsafe reports
+surefire-reports/
+failsafe-reports/
+
+# Docker-related files
+**/.docker/
+docker-compose.override.yml
+
+# Compiled Java classes and archives
+*.class
+*.jar
+*.war
+*.ear
+
