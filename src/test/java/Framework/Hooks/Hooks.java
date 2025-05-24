@@ -1,9 +1,13 @@
 package Framework.Hooks;
 
 import Framework.WebAppDriver;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
+
+import java.io.IOException;
+
 
 public class Hooks {
 
@@ -16,7 +20,6 @@ public class Hooks {
     }
 
     // Before Hooks
-
     @Before
     public void before() {
         // Init the driver
@@ -27,13 +30,8 @@ public class Hooks {
     }
 
     // After Hooks
-
-    @After()
+    @After
     public void after(Scenario scenarioContext) {
-
-//        if (scenarioContext.isFailed()) {
-//            webDriver.takeScreenshotOnFailure(scenarioContext);
-//        }
         webDriver.takeScreenshotOnFailure(scenarioContext);
         webDriver.killDriver();
     }
