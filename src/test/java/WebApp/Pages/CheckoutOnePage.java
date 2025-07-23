@@ -8,9 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckoutOnePage {
-
-    // locators
+public class CheckoutOnePage extends BasePage
+{
     @FindBy(id = "first-name")
     private InputBox firstNameInput;
 
@@ -21,30 +20,36 @@ public class CheckoutOnePage {
     private InputBox postalCodeInput;
 
     @FindBy(id = "continue")
-    public Button continueBtn;
+    private Button continueBtn;
 
     @FindBy(id = "cancel")
-    public Button cancelBtn;
+    private Button cancelBtn;
 
-    // methods
-    public void enterFirstName(String firstName){
+    public void clickContinueButton()
+    {
+        continueBtn.click();
+    }
+
+    public CheckoutOnePage enterFirstName(String firstName)
+    {
         firstNameInput.WriteText(firstName);
+        return this;
     }
 
-    public void enterLastName(String lastName){
+    public CheckoutOnePage enterLastName(String lastName)
+    {
         lastNameInput.WriteText(lastName);
+        return this;
     }
-    public void enterPostalCode(String postalCode){
+
+    public CheckoutOnePage enterPostalCode(String postalCode)
+    {
         postalCodeInput.WriteText(postalCode);
+        return this;
     }
 
-    // instantiate driver
-    private WebDriver driver;
-
-    // constructor to initialise driver and pagefactory for the page
-    public CheckoutOnePage(WebAppDriver webAppDriver) {
-        driver = webAppDriver.getDriver();
-        PageFactory.initElements(new CustomFieldDecorator(driver), this);
+    public CheckoutOnePage(WebAppDriver webAppDriver)
+    {
+        super(webAppDriver);
     }
-
 }

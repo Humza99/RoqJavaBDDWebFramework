@@ -1,17 +1,13 @@
 package WebApp.Pages;
 
-import Framework.CustomElements.CustomFieldDecorator;
 import Framework.CustomElements.FindByImpl.Button;
 import Framework.CustomElements.FindByImpl.InputBox;
 import Framework.CustomElements.FindByImpl.Text;
 import Framework.WebAppDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-
-    // locators
+public class LoginPage extends BasePage
+{
     @FindBy(id = "user-name")
     private InputBox usernameInput;
 
@@ -19,25 +15,35 @@ public class LoginPage {
     private InputBox passwordInput;
 
     @FindBy(xpath = "//h3[@data-test='error']")
-    public Text errorMessage;
+    private Text errorMessage;
 
     @FindBy(id = "login-button")
-    public Button loginBtn;
+    private Button loginBtn;
 
-    // methods
-    public void enterUsername(String username){
+    public void clickLoginButton()
+    {
+        loginBtn.click();
+    }
+
+    public String getErrorMessage()
+    {
+        return errorMessage.getText();
+    }
+
+    public LoginPage enterUsername(String username)
+    {
         usernameInput.WriteText(username);
+        return this;
     }
 
-    public void enterPassword(String password){
+    public LoginPage enterPassword(String password)
+    {
         passwordInput.WriteText(password);
+        return this;
     }
 
-    private WebDriver driver;
-
-    // constructor to initialise driver and pagefactory for the page
-    public LoginPage(WebAppDriver webAppDriver) {
-        this.driver = webAppDriver.getDriver();
-        PageFactory.initElements(new CustomFieldDecorator(driver), this);
+    public LoginPage(WebAppDriver webAppDriver)
+    {
+        super(webAppDriver);
     }
 }

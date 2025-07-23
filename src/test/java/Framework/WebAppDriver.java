@@ -1,5 +1,6 @@
 package Framework;
 
+import Utilites.SettingsLoader;
 import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -94,7 +95,6 @@ public class WebAppDriver {
     public String takeScreenshotOnFailure(Scenario scenarioContext) {
 
         String tempPath = System.getProperty("java.io.tmpdir") + File.separator + "AutomationFailScreenshots" + File.separator;
-
         File directory = new File(tempPath);
 
         if (!directory.exists()) {

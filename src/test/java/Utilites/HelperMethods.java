@@ -1,5 +1,6 @@
-package Framework;
+package Utilites;
 
+import Framework.WebAppDriver;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -12,27 +13,33 @@ import java.util.List;
 
 public class HelperMethods {
 
-    // drivers for page
     private WebDriver driver;
 
-    // setting driver in use to this driver
     public HelperMethods(WebAppDriver webAppDriver)
     {
         this.driver = webAppDriver.getDriver();
     }
 
-    public void sleep(int numOfSeconds)
+    public void assertAreEqual(String expected, String actual) {
+        Assert.assertEquals(actual, expected);
+    }
+
+    public void assertIsTrue(boolean condition)
     {
-        try {
-            Thread.sleep(Duration.ofSeconds(numOfSeconds).toMillis());
-        }
-        catch (InterruptedException ex) {
-            ex.printStackTrace();
+        if (driver != null)
+            Assert.assertTrue(condition);
+        else {
+            throw new RuntimeException("This method can only be used for web application testing.");
         }
     }
 
-    public void assertAreEqual(String expected, String actual) {
-        Assert.assertEquals(actual, expected);
+    public void assertIsFalse(boolean condition)
+    {
+        if (driver != null)
+            Assert.assertFalse(condition);
+        else {
+            throw new RuntimeException("This method can only be used for web application testing.");
+        }
     }
 
     public void assertPageUrl(String expectedPageUrl) {
@@ -79,5 +86,15 @@ public class HelperMethods {
             } catch (Exception e) {
                 throw new RuntimeException("CSV file '" + csvFileName + "' could not be found");
             }
+    }
+
+    public void sleep(int numOfSeconds)
+    {
+        try {
+            Thread.sleep(Duration.ofSeconds(numOfSeconds).toMillis());
+        }
+        catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
     }
 }

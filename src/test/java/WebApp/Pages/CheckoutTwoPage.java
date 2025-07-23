@@ -7,24 +7,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckoutTwoPage {
-
-    // locators
+public class CheckoutTwoPage extends BasePage
+{
     @FindBy(id = "finish")
-    public Button finishBtn;
+    private Button finishBtn;
 
     @FindBy(id = "cancel")
     private Button cancelBtn;
 
-    // methods
-
-    // instantiate driver
-    private WebDriver driver;
-
-    // constructor to initialise driver and pagefactory for the page
-    public CheckoutTwoPage(WebAppDriver webAppDriver) {
-        driver = webAppDriver.getDriver();
-        PageFactory.initElements(new CustomFieldDecorator(driver), this);
+    public void clickFinishButton()
+    {
+        finishBtn.click();
     }
 
+    public CheckoutTwoPage(WebAppDriver webAppDriver)
+    {
+        super(webAppDriver);
+    }
 }

@@ -8,8 +8,8 @@ import java.lang.reflect.InvocationTargetException;
 import static java.text.MessageFormat.format;
 
 /*
-create() method takes a class and a wrappedElement and uses reflection to create an instance of the specified class, passing the wrappedElement to its constructor.
 findImplementationFor() method uses reflection to dynamically find the implementation class for a given element class.
+create() method takes a class and a wrappedElement and uses reflection to create an instance of the specified class, passing the wrappedElement to its constructor.
  */
 
 public class ElementLocatorFactory implements IElementLocatorFactory {

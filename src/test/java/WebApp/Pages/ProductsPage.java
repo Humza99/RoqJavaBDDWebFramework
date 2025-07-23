@@ -12,31 +12,37 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProductsPage {
-
-    // locators
+public class ProductsPage extends BasePage
+{
     @FindBy(xpath = "//a[@class='shopping_cart_link']")
-    public Button goToCartBtn;
+    private Button goToCartBtn;
 
     @FindBy(xpath = "//span[@class='title' and text()='Products']")
-    public Text pageTitle;
+    private Text pageTitle;
 
-    // methods
-    public void addProductToCart(String productName){
+    public void addProductToCart(String productName)
+    {
         DynamicButton addToCartBtn = new DynamicButton(driver, By.id("add-to-cart-" + productName));
         addToCartBtn.click();
     }
 
-    public String getProductPrice(String product){
+    public void clickGoToCartButton()
+    {
+        goToCartBtn.click();
+    }
+
+    public boolean isPageTitleDisplayed()
+    {
+        return pageTitle.isDisplayed();
+    }
+
+    public String getProductPrice(String product)
+    {
         return new DynamicText(driver, By.xpath("//div[@class='inventory_item_name ' and text()='" + product + "']//parent::a//parent::div//parent::div//div[@class='inventory_item_price']")).getText();
     }
 
-    // instantiate driver
-    private WebDriver driver;
-
-    // constructor to initialise driver and pagefactory for the page
-    public ProductsPage(WebAppDriver webAppDriver) {
-        driver = webAppDriver.getDriver();
-        PageFactory.initElements(new CustomFieldDecorator(driver), this);
+    public ProductsPage(WebAppDriver webAppDriver)
+    {
+        super(webAppDriver);
     }
 }

@@ -8,9 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CartPage {
-
-    // locators
+public class CartPage extends BasePage
+{
     @FindBy(id = "remove-sauce-labs-backpack")
     private Button removeProductBtn;
 
@@ -18,16 +17,15 @@ public class CartPage {
     private Button continueShoppingBtn;
 
     @FindBy(id = "checkout")
-    public Button checkoutBtn;
+    private Button checkoutBtn;
 
-    // methods
-
-    private WebDriver driver;
-
-    // constructor to initialise driver and pagefactory for the page
-    public CartPage(WebAppDriver webAppDriver) {
-        driver = webAppDriver.getDriver();
-        PageFactory.initElements(new CustomFieldDecorator(driver), this);
+    public void clickCheckoutButton()
+    {
+        checkoutBtn.click();
     }
 
+    public CartPage(WebAppDriver webAppDriver)
+    {
+        super(webAppDriver);
+    }
 }

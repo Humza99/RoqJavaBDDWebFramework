@@ -14,7 +14,7 @@ Feature: SwagLabs
     Then I have completed my purchase
 
   Scenario: Verify product prices on website with a csv file containing prices
-    Given I log in with valid credentials
+    When I log in with valid credentials
     Then I check website prices and iterate over each product in the csv and me sure it matches
 
   @fail
