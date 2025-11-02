@@ -1,16 +1,12 @@
 package WebApp.Pages;
 
-import Framework.CustomElements.CustomFieldDecorator;
 import Framework.CustomElements.DynamicImpl.DynamicButton;
 import Framework.CustomElements.DynamicImpl.DynamicText;
 import Framework.CustomElements.FindByImpl.Button;
 import Framework.CustomElements.FindByImpl.Text;
 import Framework.WebAppDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class ProductsPage extends BasePage
 {

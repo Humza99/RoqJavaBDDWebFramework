@@ -5,11 +5,9 @@ import io.cucumber.java.Before;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 
-import java.io.IOException;
-
 public class Hooks
 {
-    private DriverInjection testContext;
+    private final DriverInjection testContext;
 
     public Hooks(DriverInjection testContext)
     {

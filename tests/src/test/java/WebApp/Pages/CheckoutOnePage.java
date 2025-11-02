@@ -1,12 +1,9 @@
 package WebApp.Pages;
 
-import Framework.CustomElements.CustomFieldDecorator;
 import Framework.CustomElements.FindByImpl.Button;
 import Framework.CustomElements.FindByImpl.InputBox;
 import Framework.WebAppDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class CheckoutOnePage extends BasePage
 {

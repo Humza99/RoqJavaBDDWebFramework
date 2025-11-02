@@ -16,7 +16,7 @@ The decorate() method checks if the field type is assignable from BaseElement an
 
 public class CustomFieldDecorator extends DefaultFieldDecorator {
 
-    private IElementLocatorFactory elementFactory = new ElementLocatorFactory();
+    private final IElementLocatorFactory elementFactory = new ElementLocatorFactory();
 
     public CustomFieldDecorator(final SearchContext searchContext) {
         super(new DefaultElementLocatorFactory(searchContext));

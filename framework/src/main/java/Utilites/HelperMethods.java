@@ -13,7 +13,7 @@ import java.util.List;
 
 public class HelperMethods {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public HelperMethods(WebAppDriver webAppDriver)
     {

@@ -1,12 +1,8 @@
 package WebApp.Pages;
 
-import Framework.CustomElements.CustomFieldDecorator;
 import Framework.CustomElements.FindByImpl.Button;
 import Framework.WebAppDriver;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class CartPage extends BasePage
 {
