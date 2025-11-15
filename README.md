@@ -1,6 +1,6 @@
 # RoqJavaBDDWebFramework
 
-Java-based BDD (Behavior Driven Development) automation framework using **Cucumber**, **TestNG**, and **Selenium WebDriver**. The framework is designed to support scalable, maintainable, and readable automated UI testing for web applications.
+Java-based BDD (Behavior Driven Development) automation Framework using **Cucumber**, **TestNG**, and **Selenium WebDriver**. The Framework is designed to support scalable, maintainable, and readable automated UI testing for web applications.
 
 ## 🚀 Features
 
