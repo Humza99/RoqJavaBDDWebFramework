@@ -16,5 +16,5 @@ Java-based BDD (Behavior Driven Development) automation Framework using **Cucumb
 
 1. Clean and build the project - mvn clean install
 2. Run the test runner - mvn test (can also manually run the test runner file)
-3. Generate allure report - mvn allure:report
+3. Generate allure report -  mvn -pl tests allure:report
 
