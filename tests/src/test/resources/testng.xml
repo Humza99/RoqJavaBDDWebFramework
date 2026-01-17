@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Product Test Suite" verbose="2">
+<suite name="Product Test Suite" parallel="methods" thread-count="2">
     <test name="Product Acceptance Tests" annotations="JDK">
         <classes>
             <!-- Add test runners here -->
