@@ -22,6 +22,7 @@ steps:
 # Generate Allure report
 - task: Maven@3
   displayName: 'Generate Allure Report'
+  condition: always()
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
@@ -34,6 +35,7 @@ steps:
 # Publish Allure report 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Allure Report'
+  condition: always()
   inputs:
     targetPath: 'tests/target/allure-report'
     artifact: 'allure-report'
@@ -42,6 +44,7 @@ steps:
 # Publish Extent Spark HTML report
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Extent Spark Report'
+  condition: always()
   inputs:
     targetPath: 'tests/target/extent-reports/spark-report'
     artifact: 'extent-spark-report'
@@ -50,6 +53,7 @@ steps:
 # Publish Extent PDF report
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Extent PDF Report'
+  condition: always()
   inputs:
     targetPath: 'tests/target/extent-reports/pdf-report'
     artifact: 'extent-pdf-report'
