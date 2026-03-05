@@ -15,6 +15,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class WebAppDriver {
 
@@ -85,8 +87,11 @@ public class WebAppDriver {
 
     public void takeScreenshotOnFailure(Scenario scenarioContext) {
         if (webDriver != null && scenarioContext.isFailed()) {
-            byte [] screenshotFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
-            scenarioContext.attach(screenshotFile, "image/png", "Test Failed - " + scenarioContext.getName());
+            byte [] screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
+            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+            String screenshotName = scenarioContext.getName().replaceAll("[^a-zA-Z0-9]", "_") + "_" + timestamp;
+
+            scenarioContext.attach(screenshot, "image/png", "FAILED_SCREENSHOT_" + screenshotName);
         }
     }
 

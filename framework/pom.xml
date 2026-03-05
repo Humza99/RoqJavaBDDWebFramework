@@ -32,7 +32,6 @@
             <version>5.11</version>
         </dependency>
 
-        <!-- Optional test-scoped dependencies -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -43,13 +42,6 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.22.1</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
             <version>7.22.1</version>
             <scope>compile</scope>
         </dependency>
