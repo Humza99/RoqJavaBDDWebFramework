@@ -25,7 +25,7 @@ steps:
   condition: always()
   inputs:
     allureVersion: '2.27.0'
-    testResultsDir: 'target/allure-results'
+    testResultsDir: 'tests/target/allure-results'
 
 # Publish Extent Spark HTML & PDF reports
 - task: PublishPipelineArtifact@1
