@@ -32,6 +32,6 @@ steps:
   displayName: 'Publish Extent Reports'
   condition: always()
   inputs:
-    targetPath: 'tests/target/extent-reports'
+    targetPath: 'tests/target/ExtentReports'
     artifact: 'ExtentReports'
     publishLocation: 'pipeline'
