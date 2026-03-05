@@ -77,6 +77,8 @@
                 <configuration>
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                        <parallel>methods</parallel>
+                        <useUnlimitedThreads>true</useUnlimitedThreads>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

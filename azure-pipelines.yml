@@ -1,0 +1,60 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+# Run tests (this generates allure-results)
+- task: Maven@3
+  displayName: 'Run Selenium Tests'
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'clean test'
+    options: '-pl tests -am'
+
+# Generate Allure report
+- task: Maven@3
+  displayName: 'Generate Allure Report'
+  condition: always()
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    jdkArchitectureOption: 'x64'
+    goals: 'allure:report'
+    options: '-pl tests'
+
+# Publish Allure report 
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Allure Report'
+  condition: always()
+  inputs:
+    targetPath: 'tests/target/allure-report'
+    artifact: 'allure-report'
+    publishLocation: 'pipeline'
+
+# Publish Extent Spark HTML report
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Extent Spark Report'
+  condition: always()
+  inputs:
+    targetPath: 'tests/target/extent-reports/spark-report'
+    artifact: 'extent-spark-report'
+    publishLocation: 'pipeline'
+
+# Publish Extent PDF report
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Extent PDF Report'
+  condition: always()
+  inputs:
+    targetPath: 'tests/target/extent-reports/pdf-report'
+    artifact: 'extent-pdf-report'
+    publishLocation: 'pipeline'
