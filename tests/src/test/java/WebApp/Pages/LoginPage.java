@@ -20,14 +20,14 @@ public class LoginPage extends BasePage
     @FindBy(id = "login-button")
     private Button loginBtn;
 
+    public LoginPage(WebAppDriver webAppDriver)
+    {
+        super(webAppDriver);
+    }
+
     public void clickLoginButton()
     {
         loginBtn.click();
-    }
-
-    public String getErrorMessage()
-    {
-        return errorMessage.getText();
     }
 
     public LoginPage enterUsername(String username)
@@ -42,8 +42,8 @@ public class LoginPage extends BasePage
         return this;
     }
 
-    public LoginPage(WebAppDriver webAppDriver)
+    public String getErrorMessage()
     {
-        super(webAppDriver);
+        return errorMessage.getText();
     }
 }

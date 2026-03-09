@@ -15,13 +15,15 @@ public class CartPage extends BasePage
     @FindBy(id = "checkout")
     private Button checkoutBtn;
 
+    public CartPage(WebAppDriver webAppDriver)
+    {
+        super(webAppDriver);
+    }
+
     public void clickCheckoutButton()
     {
         checkoutBtn.click();
     }
 
-    public CartPage(WebAppDriver webAppDriver)
-    {
-        super(webAppDriver);
-    }
+
 }

@@ -11,13 +11,6 @@ public class LoginPageSteps extends BaseSteps
         super(testContext);
     }
 
-    @Then("A error message is outputted on the screen")
-    public void aErrorMessageIsOutputtedOnTheScreen()
-    {
-        String errorMessage = loginPage.getErrorMessage();
-        helperMethods.assertAreEqual("Epic sadface: Username and password do not match any user in this service", errorMessage);
-    }
-
     @Then("I am logged in successfully")
     public void iAmLoggedInSuccessfully()
     {
@@ -28,6 +21,13 @@ public class LoginPageSteps extends BaseSteps
     public void iAmOnTheSwagLabsWebsite()
     {
         helperMethods.assertPageUrl("https://www.saucedemo.com/");
+    }
+
+    @Then("A error message is outputted on the screen")
+    public void aErrorMessageIsOutputtedOnTheScreen()
+    {
+        String errorMessage = loginPage.getErrorMessage();
+        helperMethods.assertAreEqual("Epic sadface: Username and password do not match any user in this service", errorMessage);
     }
 
     @When("I enter invalid credentials to login")

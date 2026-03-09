@@ -12,13 +12,13 @@ public class CheckoutTwoPage extends BasePage
     @FindBy(id = "cancel")
     private Button cancelBtn;
 
-    public void clickFinishButton()
-    {
-        finishBtn.click();
-    }
-
     public CheckoutTwoPage(WebAppDriver webAppDriver)
     {
         super(webAppDriver);
+    }
+
+    public void clickFinishButton()
+    {
+        finishBtn.click();
     }
 }

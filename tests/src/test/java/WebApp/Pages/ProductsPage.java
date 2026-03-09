@@ -16,6 +16,11 @@ public class ProductsPage extends BasePage
     @FindBy(xpath = "//span[@class='title' and text()='Products']")
     private Text pageTitle;
 
+    public ProductsPage(WebAppDriver webAppDriver)
+    {
+        super(webAppDriver);
+    }
+
     public void addProductToCart(String productName)
     {
         DynamicButton addToCartBtn = new DynamicButton(driver, By.id("add-to-cart-" + productName));
@@ -27,18 +32,13 @@ public class ProductsPage extends BasePage
         goToCartBtn.click();
     }
 
-    public boolean isPageTitleDisplayed()
-    {
-        return pageTitle.isDisplayed();
-    }
-
     public String getProductPrice(String product)
     {
         return new DynamicText(driver, By.xpath("//div[@class='inventory_item_name ' and text()='" + product + "']//parent::a//parent::div//parent::div//div[@class='inventory_item_price']")).getText();
     }
 
-    public ProductsPage(WebAppDriver webAppDriver)
+    public boolean isPageTitleDisplayed()
     {
-        super(webAppDriver);
+        return pageTitle.isDisplayed();
     }
 }

@@ -22,6 +22,11 @@ public class CheckoutOnePage extends BasePage
     @FindBy(id = "cancel")
     private Button cancelBtn;
 
+    public CheckoutOnePage(WebAppDriver webAppDriver)
+    {
+        super(webAppDriver);
+    }
+
     public void clickContinueButton()
     {
         continueBtn.click();
@@ -43,10 +48,5 @@ public class CheckoutOnePage extends BasePage
     {
         postalCodeInput.WriteText(postalCode);
         return this;
-    }
-
-    public CheckoutOnePage(WebAppDriver webAppDriver)
-    {
-        super(webAppDriver);
     }
 }
